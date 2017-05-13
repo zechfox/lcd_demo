@@ -189,7 +189,7 @@ void lcd_spi_master_irq_handler(void)
     SPI_WriteData(LCD_SPI, (uint16_t)send_data);
     pixel_horizon_addr++;
   }
-  if (pixel_horizon_addr >= (LCD_PIXEL_BUFFER_COLUMN * LCD_PIXEL_BUFFER_ROW))
+  if (pixel_horizon_addr > (LCD_PIXEL_BUFFER_COLUMN * LCD_PIXEL_BUFFER_ROW + 1))
   {
     pixel_horizon_addr = 0;
     SPI_DisableInterrupts(LCD_SPI, kSPI_TxEmptyInterruptEnable | kSPI_RxFullAndModfInterruptEnable);
